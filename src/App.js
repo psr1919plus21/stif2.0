@@ -12,6 +12,11 @@ function App() {
         leftSlot={ <Logo /> }
         rightSlot={'channels components will be here'}
       />
+
+      /* Temp wrapper, will be replaced with content component */
+      <div className="content">
+
+      </div>
     </div>
   );
 }
