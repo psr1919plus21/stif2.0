@@ -1,0 +1,24 @@
+.post {
+    &:hover {
+        .post__title {
+            color: #111;
+        }
+    }
+}
+
+.post__title {
+    color: #666;
+}
+
+.post__link {
+    text-decoration: none;
+}
+
+.post__img {
+    width: 100%;
+}
+
+.post__description {
+    color: #111111;
+    font-size: 18px;
+}

@@ -8,4 +8,18 @@ body {
     margin: 0 auto;
     overflow: hidden;
     min-height: 100vh;
+    padding-top: 36px;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+
+// TODO: Remove when Content component will be created
+.content {
+    max-width: 800px;
+    padding: 0 16px;
+    margin: 0 auto;
 }
