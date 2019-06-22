@@ -1,12 +1,12 @@
 import React from 'react';
 
-import postStub from './stubs/post-stub';
+import feedStub from './stubs/feed-stub';
 
 import './App.scss';
 
 import Header from './components/Header/Header';
 import Logo from './components/Logo/Logo';
-import Post from './components/Post/Post';
+import Feed from './components/Feed/Feed';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
       {/* Temp wrapper, will be replaced with content component */}
       <div className="content">
           <div className="container">
-              <Post  {...postStub} />
+              <Feed posts={feedStub}/>
           </div>
       </div>
     </div>

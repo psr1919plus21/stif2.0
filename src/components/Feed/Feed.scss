@@ -1,0 +1,17 @@
+.feed {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.feed__item {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 42px;
+    padding-bottom: 28px;
+
+    &:last-child {
+        border-bottom: 0;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+}
