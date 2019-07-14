@@ -7,13 +7,16 @@ import './App.scss';
 import Header from './components/Header/Header';
 import Logo from './components/Logo/Logo';
 import Feed from './components/Feed/Feed';
+import Channels from './components/Channels/Channels';
+
+import channels from './stubs/channels-stub';
 
 function App() {
   return (
     <div className="stif">
       <Header
         leftSlot={ <Logo /> }
-        rightSlot={'channels components will be here'}
+        rightSlot={ <Channels  channels={channels}/> }
       />
 
       {/* Temp wrapper, will be replaced with content component */}

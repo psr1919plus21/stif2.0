@@ -1,0 +1,47 @@
+.channels {
+    display: flex;
+    align-items: center;
+}
+
+.channels__item {
+    margin-right: 8px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.channels__button {
+    user-select: none;
+    -webkit-apperance: none;
+    background: #fff;
+    border: 1px solid #c7c7c7;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 10px;
+    letter-spacing: 1px;
+    line-height: 14px;
+    min-height: 21px;
+    text-transform: uppercase;
+}
+
+.channels__button_active {
+    background: #bcd0f2;
+    border-color: #444;
+    color: #fff;
+}
+
+.channels__button_add {
+    border: 0;
+    background: url(../../static/img/add.svg) no-repeat center;
+    background-size: contain;
+    cursor: pointer;
+    height: 16px;
+    margin-top: 8px;
+    width: 16px;
+
+    &:hover {
+        background: url(../../static/img/add__active.svg) no-repeat center;
+        background-size: contain;
+    }
+}
