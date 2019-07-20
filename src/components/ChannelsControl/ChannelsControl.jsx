@@ -5,6 +5,19 @@ import classNames from 'classnames';
 import './ChannelsControl.scss';
 
 class ChannelsControl extends Component {
+    constructor(props) {
+        super(props);
+        this.searchInputRef = React.createRef();
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (nextProps.isActive) {
+            setTimeout(() => {
+                this.searchInputRef.current.focus();
+            }, 0);
+        }
+    }
+
     render() {
         const { channels, isActive } = this.props;
 
@@ -15,7 +28,7 @@ class ChannelsControl extends Component {
                 <div className="channels-control__content">
 
                     <div className="channels-control__search channels-search">
-                        <input placeholder="Search" type="text" className="channels-search__input"/>
+                        <input ref={this.searchInputRef} placeholder="Search" type="text" className="channels-search__input"/>
                     </div>
 
                     <ul className="channels-control__list channels-list">
@@ -23,7 +36,9 @@ class ChannelsControl extends Component {
                             channels.map(channel => {
                                 return (
                                     <div key={channel.id} className="channels-list__item">
-                                        {channel.name}
+                                        <h3 className="channels-list__title">{channel.name}</h3>
+                                        <p className="channels-list__category">{channel.category}</p>
+                                        <div className="channels-control__add"></div>
                                     </div>
                                 )
                             })

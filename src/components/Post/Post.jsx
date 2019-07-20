@@ -6,7 +6,7 @@ import './Post.scss';
 Post.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    imgUrl: PropTypes.string.isRequired,
+    urlToImage: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
 };
 
@@ -18,7 +18,7 @@ function Post(props) {
                     <header className="post__header">
                         <h2 className="post__title">{props.title}</h2>
                     </header>
-                    <img src={props.imgUrl} alt={props.title} className="post__img"/>
+                    <img src={props.urlToImage} alt={props.title} className="post__img"/>
                     <p className="post__description">{props.description}</p>
                 </a>
             </div>

@@ -3,6 +3,11 @@ body {
     background: #fcfcfc;
 }
 
+h1,
+h3 {
+    margin: 0;
+}
+
 .stif {
     box-sizing: border-box;
     margin: 0 auto;
@@ -22,4 +27,9 @@ body {
     max-width: 800px;
     padding: 0 16px;
     margin: 0 auto;
+}
+
+.no-scroll {
+    height: 100vh;
+    overflow: hidden;
 }
