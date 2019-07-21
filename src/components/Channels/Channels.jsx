@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import ChannelsControl from '../ChannelsControl/ChannelsControl';
 import { UTILS } from '../../utils/utils';
 
+import { getChannels } from '../../store/reducers/channels/actions';
+
 import './channels.scss';
 
-export default class Channels extends Component {
+class Channels extends Component {
 
     state = {
         isChannelsControlActive: false,
@@ -49,5 +52,22 @@ export default class Channels extends Component {
         });
 
         UTILS.setNoScroll(isChannelsControlActive);
+
+        this.props.getChannels();
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        channels: state.channels.items,
+    }
+}
+
+const mapActionsToProps = {
+    getChannels,
+};
+
+export default connect(
+    mapStateToProps,
+    mapActionsToProps,
+)(Channels);
