@@ -1,17 +1,12 @@
-import axios from 'axios';
-
-const API_KEY = '956918925cff4bbf971eb06f42e34b20';
-let urls = {
-    sources: 'https://newsapi.org/v1/sources?language=en'
-}
+import { API } from '../../../api/api';
+import { SET_CHANNELS } from './index';
 
 export const getChannels = () => {
-
     return (dispatch) => {
-        axios.get(urls.sources)
+        API.getChannels()
             .then((response) => {
                 dispatch({
-                    type: 'DO_THIS',
+                    type: SET_CHANNELS,
                     payload: {
                         channels: response.data.sources,
                     },

@@ -52,8 +52,6 @@ class Channels extends Component {
         });
 
         UTILS.setNoScroll(isChannelsControlActive);
-
-        this.props.getChannels();
     }
 }
 
@@ -63,11 +61,6 @@ function mapStateToProps(state) {
     }
 }
 
-const mapActionsToProps = {
-    getChannels,
-};
-
 export default connect(
     mapStateToProps,
-    mapActionsToProps,
 )(Channels);
