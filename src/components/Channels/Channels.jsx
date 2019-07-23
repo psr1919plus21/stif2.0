@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import classnames from 'classnames';
 
 import ChannelsControl from '../ChannelsControl/ChannelsControl';
 import { UTILS } from '../../utils/utils';
+
+import { setCurrentChannel } from '../../store/reducers/channels/actions';
 
 import './channels.scss';
 
@@ -13,9 +16,8 @@ class Channels extends Component {
     };
 
     render() {
-        const { channels, activeChannels } = this.props;
+        const { channels, activeChannels, currentChannel, setCurrentChannel } = this.props;
         const { isChannelsControlActive } = this.state;
-        console.log('activeChannels ', activeChannels);
 
         return (
             <div className="channels-wrapper">
@@ -30,7 +32,15 @@ class Channels extends Component {
                     {
                         activeChannels.map(channel => {
                             return (
-                                <div key={channel.id} className="channels__item">
+                                <div
+                                    key={channel.id}
+                                    onClick={ () => setCurrentChannel(channel) }
+                                    className={
+                                        classnames('channels__item', {
+                                            'channels__item_active': channel.id === currentChannel.id
+                                        })
+                                    }
+                                >
                                     <button className="channels__button">{channel.name}</button>
                                 </div>
                             );
@@ -55,9 +65,15 @@ function mapStateToProps(state) {
     return {
         channels: state.channels.items,
         activeChannels: state.channels.activeChannels,
+        currentChannel: state.channels.currentChannel,
     }
+}
+
+const mapActionsToProps = {
+    setCurrentChannel,
 }
 
 export default connect(
     mapStateToProps,
+    mapActionsToProps,
 )(Channels);

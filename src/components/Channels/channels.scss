@@ -1,3 +1,10 @@
+$channel-bg: #fff;
+$channel-border-color: #c7c7c7;
+
+$channel-bg-active: #bcd0f2;
+$channel-border-color-active: #444;
+$channel-font-color-active: #fff;
+
 .channels {
     display: flex;
     align-items: center;
@@ -11,11 +18,19 @@
     }
 }
 
+.channels__item_active {
+    .channels__button {
+        background: $channel-bg-active;
+        border-color: $channel-border-color-active;
+        color: $channel-font-color-active;
+    }
+}
+
 .channels__button {
     user-select: none;
     -webkit-apperance: none;
-    background: #fff;
-    border: 1px solid #c7c7c7;
+    background: $channel-bg;
+    border: 1px solid $channel-border-color;
     border-radius: 2px;
     cursor: pointer;
     font-size: 10px;
@@ -23,12 +38,6 @@
     line-height: 14px;
     min-height: 21px;
     text-transform: uppercase;
-}
-
-.channels__button_active {
-    background: #bcd0f2;
-    border-color: #444;
-    color: #fff;
 }
 
 .channels__button_add {
