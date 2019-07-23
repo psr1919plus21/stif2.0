@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import feedStub from '../../stubs/feed-stub';
 
-import { getChannels } from '../../store/reducers/channels/actions';
+import { getChannels, setChannelsDefault } from '../../store/reducers/channels/actions';
 
 import './App.scss';
 
@@ -16,7 +16,12 @@ import channels from '../../stubs/channels-stub';
 
 class App extends Component {
     componentWillMount() {
-        this.props.getChannels();
+        const { getChannels, setChannelsDefault } = this.props;
+
+        this.props.getChannels()
+            .then(() => {
+                setChannelsDefault();
+            });
     }
 
     render() {
@@ -40,7 +45,8 @@ class App extends Component {
 
 const mapActionsToProps = {
     getChannels,
-}
+    setChannelsDefault,
+};
 
 export default connect(
     null,

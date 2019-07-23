@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import ChannelsControl from '../ChannelsControl/ChannelsControl';
 import { UTILS } from '../../utils/utils';
 
-import { getChannels } from '../../store/reducers/channels/actions';
-
 import './channels.scss';
 
 class Channels extends Component {
@@ -15,8 +13,9 @@ class Channels extends Component {
     };
 
     render() {
-        const { channels } = this.props;
+        const { channels, activeChannels } = this.props;
         const { isChannelsControlActive } = this.state;
+        console.log('activeChannels ', activeChannels);
 
         return (
             <div className="channels-wrapper">
@@ -29,8 +28,7 @@ class Channels extends Component {
                         <ChannelsControl channels={channels} isActive={isChannelsControlActive} />
                     </div>
                     {
-                        // TODO: Тут должны подставляться каналы, которые выбрал юзер
-                        channels.slice(0, 3).map(channel => {
+                        activeChannels.map(channel => {
                             return (
                                 <div key={channel.id} className="channels__item">
                                     <button className="channels__button">{channel.name}</button>
@@ -39,8 +37,6 @@ class Channels extends Component {
                         })
                     }
                 </div>
-
-                {/*<div>Channels search</div>*/}
             </div>
         );
     }
@@ -58,6 +54,7 @@ class Channels extends Component {
 function mapStateToProps(state) {
     return {
         channels: state.channels.items,
+        activeChannels: state.channels.activeChannels,
     }
 }
 
