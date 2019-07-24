@@ -78,4 +78,23 @@
     height: 16px;
     margin-top: 8px;
     width: 16px;
+
+    &:hover {
+        background: url('../../static/img/add__active.svg') no-repeat center;
+        background-size: contain;
+    }
+}
+
+.channels-control__remove {
+    background: url('../../static/img/remove.svg') no-repeat center;
+    background-size: contain;
+    cursor: pointer;
+    height: 16px;
+    margin-top: 8px;
+    width: 16px;
+
+    &:hover {
+        background: url('../../static/img/remove__active.svg') no-repeat center;
+        background-size: contain;
+    }
 }

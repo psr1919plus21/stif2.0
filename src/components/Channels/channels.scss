@@ -42,14 +42,14 @@ $channel-font-color-active: #fff;
 
 .channels__button_add {
     border: 0;
-    background: url(../../static/img/add.svg) no-repeat center;
+    background: url('../../static/img/add.svg') no-repeat center;
     background-size: contain;
     cursor: pointer;
     height: 16px;
     width: 16px;
 
     &:hover {
-        background: url(../../static/img/add__active.svg) no-repeat center;
+        background: url('../../static/img/add__active.svg') no-repeat center;
         background-size: contain;
     }
 }

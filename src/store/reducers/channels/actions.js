@@ -1,5 +1,10 @@
 import { API } from '../../../api/api';
-import { SET_CHANNELS, SET_CHANNELS_DEFAULT, SET_CURRENT_CHANNEL } from './index';
+import {
+    SET_CHANNELS,
+    SET_CHANNELS_DEFAULT,
+    SET_CURRENT_CHANNEL,
+    TOGGLE_CHANNEL_STATUS,
+} from './index';
 
 export const getChannels = () => {
     return (dispatch) => {
@@ -31,4 +36,13 @@ export const setCurrentChannel = (newCurrentChannel) => {
             newCurrentChannel,
         }
     }
-}
+};
+
+export const toggleChannelStatus = (channelId) => {
+    return {
+        type: TOGGLE_CHANNEL_STATUS,
+        payload: {
+            channelId,
+        }
+    }
+};

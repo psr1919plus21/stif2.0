@@ -16,8 +16,9 @@ class Channels extends Component {
     };
 
     render() {
-        const { channels, activeChannels, currentChannel, setCurrentChannel } = this.props;
+        const { channels, currentChannel, setCurrentChannel } = this.props;
         const { isChannelsControlActive } = this.state;
+        const activeChannels = channels.filter(channel => channel.isActive);
 
         return (
             <div className="channels-wrapper">
@@ -27,7 +28,7 @@ class Channels extends Component {
                             className="channels__button channels__button_add"
                             onClick={this.channelsControlToggle}
                         />
-                        <ChannelsControl channels={channels} isActive={isChannelsControlActive} />
+                        <ChannelsControl isActive={isChannelsControlActive} />
                     </div>
                     {
                         activeChannels.map(channel => {
@@ -64,7 +65,6 @@ class Channels extends Component {
 function mapStateToProps(state) {
     return {
         channels: state.channels.items,
-        activeChannels: state.channels.activeChannels,
         currentChannel: state.channels.currentChannel,
     }
 }
