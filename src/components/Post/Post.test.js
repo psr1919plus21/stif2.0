@@ -37,7 +37,7 @@ describe('Post component', function() {
         const wrapper = mount(<Post  {...postStub} />);
         const newsImg = wrapper.find('.post__img').getDOMNode();
 
-        expect(newsImg.src).to.equal(postStub.imgUrl);
+        expect(newsImg.src).to.equal(postStub.urlToImage);
     });
 
     it('should contains alt text on image', () => {

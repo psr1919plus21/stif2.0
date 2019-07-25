@@ -12,8 +12,6 @@ import Logo from '../Logo/Logo';
 import Feed from '../Feed/Feed';
 import Channels from '../Channels/Channels';
 
-import channels from '../../stubs/channels-stub';
-
 class App extends Component {
     componentWillMount() {
         const { getChannels, setChannelsDefault } = this.props;
@@ -29,7 +27,7 @@ class App extends Component {
           <div className="stif">
               <Header
                   leftSlot={ <Logo /> }
-                  rightSlot={ <Channels  channels={channels}/> }
+                  rightSlot={ <Channels /> }
               />
 
               {/* Temp wrapper, will be replaced with content component */}

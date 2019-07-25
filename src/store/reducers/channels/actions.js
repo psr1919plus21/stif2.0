@@ -30,6 +30,7 @@ export const setChannelsDefault = () => {
 };
 
 export const setCurrentChannel = (newCurrentChannel) => {
+    console.log('------------------SET');
     return {
         type: SET_CURRENT_CHANNEL,
         payload: {

@@ -16,6 +16,7 @@ class Channels extends Component {
     };
 
     render() {
+        console.log('\n\n\nrender occures\n\n\n');
         const { channels, currentChannel, setCurrentChannel } = this.props;
         const { isChannelsControlActive } = this.state;
         const activeChannels = channels.filter(channel => channel.isActive);
