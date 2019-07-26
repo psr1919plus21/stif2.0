@@ -3,7 +3,7 @@ export const SET_CHANNELS_DEFAULT = 'SET_CHANNELS_DEFAULT';
 export const SET_CURRENT_CHANNEL = 'SET_CURRENT_CHANNEL';
 export const TOGGLE_CHANNEL_STATUS = 'TOGGLE_CHANNEL_STATUS';
 
-const initialState = {
+export const initialState = {
     items: [],
     currentChannel: null,
 };
@@ -13,10 +13,6 @@ const DEFAULT_CHANNELS_COUNT = 3;
 export default function(state = initialState, action) {
     switch(action.type) {
         case SET_CHANNELS:
-            const channels = action.payload.channels.map(item => {
-                item.isActive = false;
-                return item;
-            });
             return {...state, items: action.payload.channels};
 
         case SET_CHANNELS_DEFAULT:

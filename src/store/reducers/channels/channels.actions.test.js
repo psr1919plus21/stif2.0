@@ -23,7 +23,7 @@ const mockStore = configureMockStore(middlewares)
 
 
 describe('Store', () => {
-    describe('Channels', () => {
+    describe('Channels actions', () => {
         it('should return correct SET_CHANNELS_DEFAULT action', () => {
             const expectedAction = {
                 type: SET_CHANNELS_DEFAULT,
