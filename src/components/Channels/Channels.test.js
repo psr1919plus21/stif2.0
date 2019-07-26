@@ -100,18 +100,18 @@ describe('Channels component', () => {
         expect(activeChannel.text()).to.equal(store.getState().channels.currentChannel.name);
     });
 
-    it.only('should change active channel by click', () => {
-        const wrapper = mount(<Provider store={store}><Channels /></Provider>);
-        const secondChannel = wrapper.find('.channels__item').at(2);
-        secondChannel.simulate('click');
-
-        console.log(wrapper.find('.channels__item').at(2).html());
-
-        setTimeout(() => {
-            console.log(store.getState());
-            expect(wrapper.find('.channels__item').at(2).hasClass('channels__item_active')).to.equal(true);
-            done();
-        }, 1000)
-
-    });
+    // it.only('should change active channel by click', (done) => {
+    //     const wrapper = mount(<Provider store={store}><Channels /></Provider>);
+    //     const secondChannel = wrapper.find('.channels__item').at(2);
+    //     secondChannel.simulate('click');
+    //
+    //     console.log(wrapper.find('.channels__item').at(2).html());
+    //
+    //     setTimeout(() => {
+    //         console.log(store.getState());
+    //         expect(wrapper.find('.channels__item').at(2).hasClass('channels__item_active')).to.equal(true);
+    //         done();
+    //     }, 1000)
+    //
+    // });
 });
