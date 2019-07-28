@@ -6,7 +6,7 @@ import channelsReducer, {
     SET_CURRENT_CHANNEL,
     SET_CHANNELS_DEFAULT,
     TOGGLE_CHANNEL_STATUS,
-} from './index';
+} from '../index';
 
 describe('Store', () => {
     describe('Channels reducer', () => {

@@ -9,17 +9,17 @@ import {
     SET_CURRENT_CHANNEL,
     TOGGLE_CHANNEL_STATUS,
     SET_CHANNELS,
-} from './index';
+} from '../index';
 
 import {
     setChannelsDefault,
     setCurrentChannel,
     toggleChannelStatus,
     getChannels,
-} from './actions';
+} from '../actions';
 
-const middlewares = [thunk]
-const mockStore = configureMockStore(middlewares)
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
 
 
 describe('Store', () => {
