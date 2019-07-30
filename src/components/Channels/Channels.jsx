@@ -9,7 +9,7 @@ import { setCurrentChannel } from '../../store/reducers/channels/actions';
 
 import './channels.scss';
 
-class Channels extends Component {
+export class Channels extends Component {
 
     state = {
         isChannelsControlActive: false,
@@ -71,7 +71,7 @@ function mapStateToProps(state) {
 
 const mapActionsToProps = {
     setCurrentChannel,
-}
+};
 
 export default connect(
     mapStateToProps,
