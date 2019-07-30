@@ -1,6 +1,8 @@
 export default {
-    title: 'Cute cat says meow',
-    imgUrl: 'http://www.kartinki.me/pic/201306/1152x864/kartinki.me-12203.jpg',
-    url: 'https://yandex.ru/images/search?text=cat&pos=4&img_url=https%3A%2F%2Fimg1.goodfon.com%2Foriginal%2F2600x1780%2Ff%2F29%2Fkot-ryzhiy-zevaet-cat-ginger.jpg&rpt=simage',
-    description: 'Today at 10:00AM cute cat says meow and everyone was shocked. President didn\'\t comment incident yet.'
+    author: "Anthony Ha, Jordan Crook, Darrell Etherington",
+    description: "Just to get this out of the way: “Frankenstein’s Monster’s Monster, Frankenstein” is a great title. In fact, it’s probably the best thing about the new comedy special on Netflix . That’s not a complaint about the special itself, which stars David Harbour (a.k.a. …",
+    publishedAt: "2019-07-20T16:00:24Z",
+    title: "Original Content podcast: We're not on the same page about 'Frankenstein's Monster's Monster, Frankenstein'",
+    url: "https://techcrunch.com/2019/07/20/original-content-podcast-were-not-on-the-same-page-about-frankensteins-monsters-monster-frankenstein/",
+    urlToImage: "https://techcrunch.com/wp-content/uploads/2019/07/DHS_Unit_00739_R.jpg?w=600",
 }
