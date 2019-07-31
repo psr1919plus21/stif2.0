@@ -2,27 +2,41 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import './utils/stringIncludesPollyfill';
+
 
 import { toggleChannelStatus } from '../../store/reducers/channels/actions';
 
 import './ChannelsControl.scss';
 
-class ChannelsControl extends Component {
+export class ChannelsControl extends Component {
+    state = {
+        searchInputValue: '',
+        filteredChannels: [],
+    };
+
     constructor(props) {
         super(props);
         this.searchInputRef = React.createRef();
+        this.onSearchInput = this.onSearchInput.bind(this);
+    }
+
+    componentDidMount() {
+        this.filterChannelsBySearch();
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
         if (!this.props.isActive && nextProps.isActive) {
             setTimeout(() => {
                 this.searchInputRef.current.focus();
+                this.filterChannelsBySearch();
             }, 0);
         }
     }
 
     render() {
         const { channels, isActive } = this.props;
+        const { searchInputValue, filteredChannels } = this.state;
 
         return (
             <div className={classNames('channels-control', {
@@ -31,12 +45,19 @@ class ChannelsControl extends Component {
                 <div className="channels-control__content">
 
                     <div className="channels-control__search channels-search">
-                        <input ref={this.searchInputRef} placeholder="Search" type="text" className="channels-search__input"/>
+                        <input
+                            ref={this.searchInputRef}
+                            placeholder="Search"
+                            type="text"
+                            className="channels-search__input"
+                            value={searchInputValue}
+                            onChange={this.onSearchInput}
+                        />
                     </div>
 
                     <ul className="channels-control__list channels-list">
                         {
-                            channels.map(channel => {
+                            filteredChannels.map(channel => {
                                 return (
                                     <div
                                         key={channel.id}
@@ -64,6 +85,19 @@ class ChannelsControl extends Component {
         return () => {
             this.props.toggleChannelStatus(channelId);
         }
+    }
+
+    onSearchInput(e) {
+        this.setState({ searchInputValue: e.target.value.toLowerCase() }, this.filterChannelsBySearch);
+    }
+
+    filterChannelsBySearch() {
+        const { channels } = this.props;
+        const { searchInputValue } = this.state;
+        this.setState({ filteredChannels: channels.filter(channel => {
+                return channel.name.toLowerCase().includes(searchInputValue);
+            })
+        });
     }
 }
 
