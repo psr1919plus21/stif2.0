@@ -1,9 +1,8 @@
 import React, { Component, } from 'react';
 import { connect } from 'react-redux';
 
-import feedStub from '../../stubs/feed-stub';
-
 import { getChannels, setChannelsDefault } from '../../store/reducers/channels/actions';
+import { getPosts} from '../../store/reducers/feed/actions';
 
 import './App.scss';
 
@@ -14,12 +13,20 @@ import Channels from '../Channels/Channels';
 
 class App extends Component {
     componentWillMount() {
-        const { getChannels, setChannelsDefault } = this.props;
+        const { setChannelsDefault } = this.props;
 
         this.props.getChannels()
             .then(() => {
                 setChannelsDefault();
             });
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        const { getPosts } = this.props;
+
+        if (nextProps.currentChannel) {
+            getPosts({ channelId: nextProps.currentChannel.id });
+        }
     }
 
     render() {
@@ -33,7 +40,7 @@ class App extends Component {
               {/* Temp wrapper, will be replaced with content component */}
               <div className="content">
                   <div className="container">
-                      <Feed posts={feedStub}/>
+                      <Feed />
                   </div>
               </div>
           </div>
@@ -41,12 +48,19 @@ class App extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        currentChannel: state.channels.currentChannel
+    };
+}
+
 const mapActionsToProps = {
+    getPosts,
     getChannels,
     setChannelsDefault,
 };
 
 export default connect(
-    null,
+    mapStateToProps,
     mapActionsToProps,
 )(App);

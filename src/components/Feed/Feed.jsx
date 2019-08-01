@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Post from '../Post/Post';
 
 import './Feed.scss';
 
-class Feed extends Component {
+export class Feed extends Component {
     render() {
         const { posts } = this.props;
 
@@ -14,7 +14,8 @@ class Feed extends Component {
                 {
                     posts.map((post) => {
                         return (
-                            <li className='feed__item' key={Math.floor(Math.random() * 1000)}>
+                            // url в качестве ключа потому, что в v2 API у статей нет айдишников
+                            <li className='feed__item' key={post.url}>
                                 <Post {...post} />
                             </li>
                         );
@@ -25,8 +26,10 @@ class Feed extends Component {
     }
 }
 
-Feed.propTypes = {
-    posts: PropTypes.arrayOf(PropTypes.object)
-};
+function mapStateToProps(state) {
+    return {
+        posts: state.feed.items,
+    }
+}
 
-export default Feed;
+export default connect(mapStateToProps)(Feed);
