@@ -1,68 +1,9 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import { shallow } from 'enzyme';
-import { expect } from 'chai'
+import { expect } from 'chai';
 
-import channelsStore, { SET_CHANNELS_DEFAULT } from '../../store/reducers/channels/';
 import { Channels } from './Channels';
-import {setCurrentChannel} from "../../store/reducers/channels/actions";
-
-const channels = [
-    {
-        "id": "abc-news-au",
-        "name": "ABC News (AU)",
-        "description": "Australia's most trusted source of local, national and world news. Comprehensive, independent, in-depth analysis, the latest business, sport, weather and more.",
-        "url": "http://www.abc.net.au/news",
-        "category": "general",
-        "language": "en",
-        "country": "au",
-        "urlsToLogos": {
-            "small": "",
-            "medium": "",
-            "large": ""
-        },
-        "sortBysAvailable": [
-            "top"
-        ],
-        isActive: true,
-    }, {
-        "id": "al-jazeera-english",
-        "name": "Al Jazeera English",
-        "description": "News, analysis from the Middle East and worldwide, multimedia and interactives, opinions, documentaries, podcasts, long reads and broadcast schedule.",
-        "url": "http://www.aljazeera.com",
-        "category": "general",
-        "language": "en",
-        "country": "us",
-        "urlsToLogos": {
-            "small": "",
-            "medium": "",
-            "large": ""
-        },
-        "sortBysAvailable": [
-            "top"
-        ],
-        isActive: false,
-    }, {
-        "id": "Some cool news",
-        "name": "Some cool news",
-        "description": "News, analysis from the Middle East and worldwide, multimedia and interactives, opinions, documentaries, podcasts, long reads and broadcast schedule.",
-        "url": "http://www.aljazeera.com",
-        "category": "general",
-        "language": "en",
-        "country": "us",
-        "urlsToLogos": {
-            "small": "",
-            "medium": "",
-            "large": ""
-        },
-        "sortBysAvailable": [
-            "top"
-        ],
-        isActive: true,
-    }
-
-];
+import { channels } from './stubs';
 
 let state = {
     channels: {
@@ -70,7 +11,6 @@ let state = {
         currentChannel: channels[0],
     }
 };
-
 
 let wrapper;
 
@@ -112,5 +52,15 @@ describe('Channels component', () => {
         wrapper.setProps({currentChannel: state.channels.currentChannel});
 
         expect(wrapper.find('.channels__item').at(2).hasClass('channels__item_active')).to.equal(true);
+    });
+
+    it('should toggle isChannelsControlActive by channels control button click', () => {
+        const channelsButtonAdd = wrapper.find('.channels__button_add');
+
+        expect(wrapper.state()).to.deep.equal({ isChannelsControlActive: false });
+
+        channelsButtonAdd.simulate('click');
+
+        expect(wrapper.state()).to.deep.equal({ isChannelsControlActive: true });
     });
 });
