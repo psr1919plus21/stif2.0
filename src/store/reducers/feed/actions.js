@@ -4,7 +4,7 @@ import { SET_POSTS } from './';
 
 export const getPosts = ({ channelId }) => {
     return dispatch => {
-        API.getPostsTop({ channelId })
+        return API.getPostsTop({ channelId })
             .then(response => {
                 dispatch({
                     type: SET_POSTS,

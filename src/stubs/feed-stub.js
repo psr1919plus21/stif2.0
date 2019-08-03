@@ -4,7 +4,8 @@ const feedStub = [];
 const stubsCount = 10;
 
 for (let i = 0; i < stubsCount; i++) {
-    feedStub.push(postStub);
+    const postStubWithRandomUrl = {...postStub, url: 'http://' + Math.random()};
+    feedStub.push(postStubWithRandomUrl);
 }
 
 export default feedStub;

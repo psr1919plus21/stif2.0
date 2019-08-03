@@ -30,21 +30,24 @@ class App extends Component {
     }
 
     render() {
-      return (
-          <div className="stif">
-              <Header
+        const { currentChannel } = this.props;
+
+        return (
+            <div className="stif">
+                <Header
                   leftSlot={ <Logo /> }
                   rightSlot={ <Channels /> }
-              />
+                />
 
-              {/* Temp wrapper, will be replaced with content component */}
-              <div className="content">
-                  <div className="container">
-                      <Feed />
-                  </div>
-              </div>
-          </div>
-      );
+                {/* Temp wrapper, will be replaced with content component */}
+                <div className="content">
+                    <div className="container">
+                        <h1 className="channel-name">{currentChannel && currentChannel.name}</h1>
+                        <Feed />
+                    </div>
+                </div>
+            </div>
+        );
     }
 }
 

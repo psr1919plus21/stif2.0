@@ -1,6 +1,7 @@
 body {
     font-family: 'Hind', sans-serif;
     background: #fcfcfc;
+    overflow-y: scroll;
 }
 
 h1,
@@ -32,4 +33,14 @@ h3 {
 .no-scroll {
     height: 100vh;
     overflow: hidden;
+}
+
+.channel-name {
+    text-align: center;
+    color: #8e5098;
+    font-size: 42px;
+    border-bottom: 2px solid #8e5098;
+    margin: 22px 0;
+    padding-bottom: 13px;
+    min-height: 65px;
 }
