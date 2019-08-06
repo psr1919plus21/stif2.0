@@ -63,7 +63,7 @@ describe('Store', () => {
                 sources: [{ foo: 1, bar: 2}],
             };
 
-            mockAxios.onGet('https://newsapi.org/v1/sources?language=en')
+            mockAxios.onGet('https://newsapi.org/v2/sources?language=en')
                 .reply(200, responseData);
 
             const store = mockStore({ items: [] });
@@ -74,10 +74,11 @@ describe('Store', () => {
                 }
             };
 
-            return store.dispatch(getChannels()).then(() => {
-                expect(store.getActions()[0]).to.deep.equal(expectedAction);
-                done();
-            })
+            return store.dispatch(getChannels())
+                .then(() => {
+                    expect(store.getActions()[0]).to.deep.equal(expectedAction);
+                    done();
+                });
         });
     });
 });

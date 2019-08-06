@@ -3,7 +3,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { expect } from 'chai'
 
-import Feed from "../Feed/Feed";
+import { Feed } from "../Feed/Feed";
 import feedStub from "../../stubs/feed-stub";
 
 describe('Feed component', () => {
