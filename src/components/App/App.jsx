@@ -21,6 +21,14 @@ class App extends Component {
             });
     }
 
+    componentDidMount(nextProps) {
+        const { currentChannel, getPosts } = this.props;
+
+        if (Boolean(currentChannel)) {
+            getPosts({ channelId: currentChannel.id });
+        }
+    }
+
     componentWillReceiveProps(nextProps, nextContext) {
         const { getPosts } = this.props;
 
