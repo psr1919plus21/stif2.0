@@ -8,15 +8,12 @@ export const initialState = getInitialStateFromLocalStorage() || {
     currentChannel: null,
 };
 
-console.log(initialState);
-
 const DEFAULT_CHANNELS_COUNT = 3;
 
 export default function(state = initialState, action) {
     switch(action.type) {
         case SET_CHANNELS:
             if (state.items.length && state.currentChannel) {
-                console.log('state ', state);
                 return state;
             }
 
@@ -63,7 +60,6 @@ function getInitialStateFromLocalStorage() {
     let result;
 
     if (Boolean(localStorageChannels)) {
-        console.log('update initial state');
         try {
             result = JSON.parse(localStorageChannels);
         } catch(error) {

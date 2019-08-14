@@ -2,9 +2,9 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
-import syncStoreWithLocalstorage from './utils/syncStoreWithLocalstorage';
+import syncReduxWithLocalstorage from 'sync-redux-with-localstorage';
 
 export default createStore(
     rootReducer,
-    composeWithDevTools(applyMiddleware(thunk, syncStoreWithLocalstorage('channels'))),
+    composeWithDevTools(applyMiddleware(thunk, syncReduxWithLocalstorage('channels'))),
 );
