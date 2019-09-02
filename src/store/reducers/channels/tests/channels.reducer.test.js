@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+import { LocalStorageMock } from '../../../../utils/localStorageMock';
 
 import channelsReducer, {
     initialState,
@@ -39,6 +40,33 @@ describe('Store', () => {
             const expectedState = {
                 items: [{ foo: 1, isActive: true }, { bar: 2, isActive: true }],
                 currentChannel: { foo: 1, isActive: true },
+            };
+
+            const actualState = channelsReducer(previousState, {
+                type: SET_CHANNELS_DEFAULT,
+            });
+
+            expect(actualState).to.deep.equal(expectedState);
+        });
+
+        it('should deal with localStorage', () => {
+            global.localStorage = new LocalStorageMock();
+
+            global.localStorage.setItem('reduxLocalStorage', JSON.stringify({
+                channels: {
+                    items: [{ id: 'foo', isActive: false}, { id: 'bar', isActive: true }],
+                    currentChannel: {id: 'bar'}
+                }
+            }));
+
+            const previousState = {
+                items: [{ id: 'foo', foo: 1 }, { id: 'bar', bar: 2 }],
+                currentChannel: null,
+            };
+
+            const expectedState = {
+                items: [{ id: 'foo', foo: 1, isActive: false }, { id: 'bar', bar: 2, isActive: true }],
+                currentChannel: { id: 'bar', bar: 2, isActive: true },
             };
 
             const actualState = channelsReducer(previousState, {
