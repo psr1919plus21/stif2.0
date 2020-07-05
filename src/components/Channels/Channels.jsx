@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 
 import ChannelsControl from '../ChannelsControl/ChannelsControl';
+import ChannelsDropdown from '../ChannelsDropdown/ChannelsDropdown';
 import { UTILS } from '../../utils/utils';
 
 import { setCurrentChannel } from '../../store/reducers/channels/actions';
@@ -13,12 +14,15 @@ export class Channels extends Component {
 
     state = {
         isChannelsControlActive: false,
+        isChannelsDropdownActive: false,
     };
 
     render() {
         const { channels, currentChannel, setCurrentChannel } = this.props;
-        const { isChannelsControlActive } = this.state;
+        const { isChannelsControlActive, isChannelsDropdownActive } = this.state;
         const activeChannels = channels.filter(channel => channel.isActive);
+        const previewChannels = activeChannels.slice(0, 4);
+        const restChannels = activeChannels.slice(4);
 
         return (
             <div className="channels-wrapper">
@@ -31,7 +35,7 @@ export class Channels extends Component {
                         <ChannelsControl isActive={isChannelsControlActive} />
                     </div>
                     {
-                        activeChannels.map(channel => {
+                        previewChannels.map(channel => {
                             return (
                                 <div
                                     key={channel.id}
@@ -47,6 +51,21 @@ export class Channels extends Component {
                             );
                         })
                     }
+                    {
+                        restChannels.length && <div className="channels__item">
+                            <button
+                                className="channels__button"
+                                onClick={this.channelsDropdownToggle}
+                                >Еще {restChannels.length}
+                            </button>
+                            {
+                                isChannelsDropdownActive && <ChannelsDropdown 
+                                    items={restChannels}
+                                    onChannelClick={setCurrentChannel}
+                                />
+                            }
+                        </div>
+                    }
                 </div>
             </div>
         );
@@ -59,6 +78,14 @@ export class Channels extends Component {
         });
 
         UTILS.setNoScroll(isChannelsControlActive);
+    }
+
+    // TODO: Перенести эту логику в компонент дропдауна, объединив его с кнопкой.
+    channelsDropdownToggle = () => {
+        const isChannelsDropdownActive = !this.state.isChannelsDropdownActive;
+        this.setState({
+            isChannelsDropdownActive,
+        });
     }
 }
 

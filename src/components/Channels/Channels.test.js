@@ -57,10 +57,10 @@ describe('Channels component', () => {
     it('should toggle isChannelsControlActive by channels control button click', () => {
         const channelsButtonAdd = wrapper.find('.channels__button_add');
 
-        expect(wrapper.state()).to.deep.equal({ isChannelsControlActive: false });
+        expect(wrapper.state().isChannelsControlActive).to.equal(false);
 
         channelsButtonAdd.simulate('click');
 
-        expect(wrapper.state()).to.deep.equal({ isChannelsControlActive: true });
+        expect(wrapper.state().isChannelsControlActive).to.equal(true);
     });
 });
